@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Binario de Búsqueda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <script defer src="{{ url_for('static', filename='js/visualization.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Árbol Binario de Búsqueda</h1>
+            <p>Visualizador de Árboles Binarios de Búsqueda</p>
+        </header>
+        
+        <main>
+            <!-- Mensajes Flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="messages">
+                        {% for category, message in messages %}
+                            <div class="message {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <div class="main-content">
+                <!-- Panel de Operaciones -->
+                <section class="operations-panel">
+                    <h2>Operaciones</h2>
+                    
+                    <div class="operation-forms">
+                        <form method="POST" action="/insertar" class="operation-form">
+                            <h3>Insertar en Árbol Binario</h3>
+                            <input type="number" name="valor" placeholder="Ingrese un número a insertar" required>
+                            <button type="submit">Insertar en BST</button>
+                        </form>
+
+                        <form method="POST" action="/insertar_avl" class="operation-form avl-form">
+                            <h3>Insertar en Árbol AVL</h3>
+                            <input type="number" name="valor" placeholder="Ingrese un número a insertar" required>
+                            <button type="submit" class="btn-avl">Insertar en AVL</button>
+                        </form>
+
+                        <form method="POST" action="/insertar_mvias" class="operation-form mvias-form">
+                            <h3>Insertar en Árbol M-vías</h3>
+                            <input type="number" name="valor" placeholder="Ingrese un número a insertar" required>
+                            <button type="submit" class="btn-mvias">Insertar en M-vías</button>
+                        </form>
+
+                        <form method="POST" action="/eliminar" class="operation-form">
+                            <h3>Eliminar un valor</h3>
+                            <input type="number" name="valor" placeholder="Ingrese un número a eliminar" required>
+                            <button type="submit">Eliminar</button>
+                        </form>
+
+                        <form method="POST" action="/buscar" class="operation-form">
+                            <h3>Buscar un valor</h3>
+                            <input type="number" name="valor" placeholder="Ingrese un número a buscar" required>
+                            <button type="submit">Buscar</button>
+                        </form>
+                    </div>
+
+                    <!-- Botones de Utilidad -->
+                    <div class="utility-buttons">
+                        <form method="POST" action="/limpiar_arbol" style="display: inline;">
+                            <button type="submit" class="btn-danger">Limpiar Árbol</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Panel de Visualización -->
+                <section class="visualization-panel">
+                    <h2>Visualización de los Árboles</h2>
+                    
+                    <div class="trees-container">
+                        <div class="tree-section">
+                            <h3>Árbol Binario de Búsqueda (BST)</h3>
+                            <div class="tree-display">
+                                <pre class="ascii-tree">{{ visualizacion_ascii }}</pre>
+                            </div>
+                            <div class="canvas-section">
+                                <canvas id="canvas-bst" width="600" height="350"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="tree-section">
+                            <h3>Árbol AVL (Balanceado)</h3>
+                            <div class="tree-display">
+                                <pre class="ascii-tree">{{ visualizacion_avl }}</pre>
+                            </div>
+                            <div class="canvas-section">
+                                <canvas id="canvas-avl" width="600" height="350"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="tree-section">
+                            <h3>Árbol M-vías</h3>
+                            <div class="tree-display">
+                                <pre class="ascii-tree">{{ visualizacion_mvias }}</pre>
+                            </div>
+                            <div class="canvas-section">
+                                <canvas id="canvas-mvias" width="600" height="350"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Panel de Información -->
+                <section class="info-panel">
+                    <h2>Información de los Árboles</h2>
+                    
+                    <div class="info-sections">
+                        <div class="info-section">
+                            <h3>Árbol Binario de Búsqueda (BST)</h3>
+                            <div class="tree-info">
+                                <div class="info-item">
+                                    <strong>Total de nodos:</strong> {{ info_arbol.total_nodos }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Altura:</strong> {{ info_arbol.altura }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Inorden:</strong> {{ info_arbol.inorden }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Preorden:</strong> {{ info_arbol.preorden }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Postorden:</strong> {{ info_arbol.postorden }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-section">
+                            <h3>Árbol AVL (Balanceado)</h3>
+                            <div class="tree-info">
+                                <div class="info-item">
+                                    <strong>Total de nodos:</strong> {{ info_avl.total_nodos }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Altura:</strong> {{ info_avl.altura }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Inorden:</strong> {{ info_avl.inorden }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Preorden:</strong> {{ info_avl.preorden }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Postorden:</strong> {{ info_avl.postorden }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <h3>Árbol M-vías</h3>
+                            <div class="tree-info">
+                                <div class="info-item">
+                                    <strong>Total de nodos:</strong> {{ info_mvias.total_nodos }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Altura:</strong> {{ info_mvias.altura }}
+                                </div>
+                                <div class="info-item">
+                                    <strong>Recorrido Inorden:</strong> {{ info_mvias.inorden }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

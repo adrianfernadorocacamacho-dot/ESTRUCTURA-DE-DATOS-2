@@ -1,0 +1,371 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #871212 0%, #cccc2c 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Mensajes Flash */
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Layout principal */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Panel de operaciones */
+.operations-panel {
+    background: rgba(176, 171, 74, 0.348);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.operations-panel h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ffffff6e;
+    padding-bottom: 10px;
+}
+
+.operation-forms {
+    margin-bottom: 25px;
+}
+
+.operation-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #b48c37;
+    border-radius: 10px;
+    border: 1px solid #d4ba10;
+}
+
+.operation-form h3 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.operation-form input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.operation-form input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.operation-form button {
+    background: linear-gradient(135deg, #ea8b66 0%, #d2c442 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+.operation-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Estilos para M-vías */
+.btn-mvias {
+    background: linear-gradient(135deg, #66b3ea 0%, #42d2c4 100%) !important;
+}
+
+.mvias-form {
+    border-left: 4px solid #42d2c4 !important;
+}
+
+.utility-buttons {
+    text-align: center;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 62, 62, 0.4);
+}
+
+/* Panel de visualización */
+.visualization-panel {
+    background: rgba(175, 149, 64, 0.862);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.visualization-panel h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.tree-display {
+    background: #1a202c;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+    border: 2px solid #2d3748;
+}
+
+.canvas-section {
+    margin-top: 12px;
+    background: #0f141e;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px dashed #2d3748;
+}
+
+.ascii-tree {
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin: 0;
+    white-space: pre;
+    text-shadow: 0 0 10px rgba(226, 232, 240, 0.3);
+}
+
+/* Panel de información */
+.info-panel {
+    grid-column: 1 / -1;
+    background: rgb(159, 148, 51);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.info-panel h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.tree-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    font-size: 1rem;
+}
+
+.info-item strong {
+    color: #2d3748;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .tree-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .ascii-tree {
+        font-size: 0.9rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.operations-panel,
+.visualization-panel,
+.info-panel {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.visualization-panel {
+    animation-delay: 0.2s;
+}
+
+.info-panel {
+    animation-delay: 0.4s;
+}
+
+/* Estilos para árboles múltiples */
+.trees-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.tree-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tree-section h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para botón AVL */
+.btn-avl {
+    background: linear-gradient(135deg, #ea8b66 0%, #d2c442 100%) !important;
+}
+
+.btn-avl:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4) !important;
+}
+
+.avl-form {
+    border-left: 4px solid #aacb35 !important;
+}
+
+/* Estilos para información de árboles múltiples */
+.info-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-section h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive para árboles múltiples */
+@media (max-width: 768px) {
+    .trees-container,
+    .info-sections {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .tree-section,
+    .info-section {
+        padding: 12px;
+    }
+}
